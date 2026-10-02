@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regnum: Reliquias del Pasado - Pixel Art</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    
+    * {
+      font-family: 'Press Start 2P', monospace;
+      image-rendering: pixelated; /* Fuerza renderizado nítido de píxeles */
+    }
+
+    body {
+      background-color: #0f0d13;
+      color: #e2d1a6;
+    }
+
+    /* Tablero Damero Pixel Art */
+    .pixel-chessboard {
+      background-color: #1a1423;
+      background-image: 
+        linear-gradient(45deg, #2d2238 25%, transparent 25%),
+        linear-gradient(-45deg, #2d2238 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #2d2238 75%),
+        linear-gradient(-45deg, transparent 75%, #2d2238 75%);
+      background-size: 32px 32px;
+      background-position: 0 0, 0 16px, 16px -16px, -16px 0px;
+    }
+
+    /* Borde pixelado estilo marco retro */
+    .pixel-box {
+      border: 4px solid #8c6d3b;
+      box-shadow: 
+        -4px 0 0 0 #3a2818,
+        4px 0 0 0 #3a2818,
+        0 -4px 0 0 #3a2818,
+        0 4px 0 0 #3a2818;
+    }
+
+    /* Token circular con avatar pixel-art */
+    .pixel-token {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 3px solid;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 0 rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center min-h-screen p-2 sm:p-4">
+
+  <!-- MARCO PRINCIPAL DEL JUEGO -->
+  <div class="w-full max-w-md bg-[#19131d] pixel-box p-3 flex flex-col gap-3">
+    
+    <!-- HEADER: ESTADO Y BIOMA -->
+    <div class="bg-[#261c2e] border-2 border-[#5c4728] p-2 flex justify-between items-center text-[10px]">
+      <div>
+        <h1 class="text-[#f59e0b] font-bold mb-1">MAGO</h1>
+        <div class="flex gap-1 text-red-500 text-[12px]">
+          ♥♥♥♥♥<span class="text-gray-700">♥</span>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <span class="bg-[#8c2b2b] text-white px-1 py-0.5 text-[8px]">PISO 10</span>
+        <p class="text-[#e2d1a6] mt-1 text-[8px]">TRONO DE ZULDRAK</p>
+        <div class="mt-1 text-[10px]">🗡️ 🗡️ 💎</div>
+      </div>
+    </div>
+
+    <!-- TABLERO TÁCTICO 5x5 CON TOKENS EN PIXEL ART -->
+    <div class="relative aspect-square w-full pixel-chessboard border-4 border-[#5c4728] grid grid-cols-5 gap-1 p-1">
+      
+      <!-- Fila 1 -->
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+
+      <!-- Fila 2: Zuldrak -->
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-red-900 bg-red-950/40 flex items-center justify-center relative">
+        <!-- Avatar Pixel Art de Zuldrak -->
+        <div class="pixel-token border-red-500" style="background-image: url('https://api.dicebear.com/7.x/bottts/svg?seed=Zuldrak&backgroundColor=881337');"></div>
+        <span class="absolute -bottom-2 bg-red-900 text-white text-[7px] px-1">12 HP</span>
+      </div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+
+      <!-- Fila 3: Esbirro -->
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-purple-900 bg-purple-950/30 flex items-center justify-center">
+        <!-- Avatar Pixel Art del Cultista/Esbirro -->
+        <div class="pixel-token border-purple-400" style="background-image: url('https://api.dicebear.com/7.x/bottts/svg?seed=Cultist&backgroundColor=581c87');"></div>
+      </div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+
+      <!-- Fila 4 -->
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+
+      <!-- Fila 5: Mago (Jugador) -->
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-amber-600 bg-amber-950/30 flex items-center justify-center relative">
+        <!-- Avatar Pixel Art del Mago -->
+        <div class="pixel-token border-purple-400" style="background-image: url('https://api.dicebear.com/7.x/bottts/svg?seed=MageHero&backgroundColor=3b0764');"></div>
+        <span class="absolute -bottom-2 bg-purple-900 text-white text-[7px] px-1">TÚ</span>
+      </div>
+      <div class="border border-[#3d2e1e]/30"></div>
+      <div class="border border-[#3d2e1e]/30"></div>
+
+    </div>
+
+    <!-- PANEL INFERIOR: DADOS Y COMANDOS RETRO -->
+    <div class="bg-[#261c2e] border-2 border-[#5c4728] p-2 flex flex-col gap-2">
+      
+      <div class="flex justify-between items-center text-[8px]">
+        <span class="text-[#a3907c]">DADOS DISPONIBLES</span>
+        <span class="text-amber-400">ELIGE UNO</span>
+      </div>
+
+      <!-- DADOS D6 ESTILO PIXEL ART -->
+      <div class="flex justify-center gap-3 my-1">
+        <button class="w-10 h-10 bg-[#fef3c7] text-[#451a03] border-4 border-[#b45309] font-bold text-[14px] flex items-center justify-center shadow-[2px_2px_0px_#78350f]">
+          5
+        </button>
+        <button class="w-10 h-10 bg-[#fef3c7] text-[#451a03] border-4 border-[#b45309] font-bold text-[14px] flex items-center justify-center shadow-[2px_2px_0px_#78350f]">
+          3
+        </button>
+        <button class="w-10 h-10 bg-[#fef3c7] text-[#451a03] border-4 border-[#b45309] font-bold text-[14px] flex items-center justify-center shadow-[2px_2px_0px_#78350f]">
+          6
+        </button>
+      </div>
+
+      <!-- BOTONES DE ACCIÓN RETRO -->
+      <div class="grid grid-cols-3 gap-1 text-[8px]">
+        <button class="bg-[#3b2d20] text-amber-200 border-2 border-[#8c6d3b] py-2 font-bold shadow-[0_2px_0_#1c1612]">
+          MOVER
+        </button>
+        <button class="bg-[#782424] text-white border-2 border-red-500 py-2 font-bold shadow-[0_2px_0_#450a0a]">
+          ATACAR
+        </button>
+        <button class="bg-[#254d32] text-emerald-100 border-2 border-emerald-500 py-2 font-bold shadow-[0_2px_0_#064e3b]">
+          DEFENDER
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
